@@ -1,0 +1,23 @@
+services:
+  backend:
+    build: ./backend
+    env_file: .env
+    environment:
+      # Inside the container, data lives on the mounted volume. These override
+      # the local-development paths in .env. For PostgreSQL, change DATABASE_URL here.
+      DATABASE_URL: sqlite+aiosqlite:////data/organizer.db
+      MEDIA_DIR: /data/media
+    volumes:
+      - app-data:/data
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+volumes:
+  app-data:
