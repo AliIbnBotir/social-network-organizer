@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from app.api import posts
 from app.api.routes import router
 from app.config import get_settings
 from app.connectors.registry import close_connectors
@@ -32,3 +33,4 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Social Network Organizer", lifespan=lifespan)
 app.include_router(router)
+app.include_router(posts.router)
