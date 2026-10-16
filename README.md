@@ -29,6 +29,8 @@ for each publication. Every network implements the same `Connector` interface
 3. Copy `.env.example` to `.env` and fill in `TELEGRAM_BOT_TOKEN` and
    `TELEGRAM_CHANNEL_ID` (`@yourchannel`, or the numeric `-100…` id for a
    private channel).
+4. Set `DASHBOARD_PASSWORD` to protect the dashboard. Without it there is no
+   login, which is fine only while the app runs on your own computer.
 
 ### Run with Docker
 
@@ -36,8 +38,11 @@ for each publication. Every network implements the same `Connector` interface
 docker compose up --build
 ```
 
-Open http://localhost:8080. The **Connections** panel shows whether the bot
-can post to your channel.
+Open http://localhost:8080. **Connections** shows whether the bot can post to
+your channel. **Write** is where you write a post, add photos or videos, save
+it as a draft or publish it now. **Posts** lists your drafts and published
+posts with links to them in the channel; a failed post can be edited and
+retried.
 
 ### Run for development
 
@@ -58,8 +63,8 @@ npm run dev               # http://localhost:5173, proxies /api to :8000
 
 ## Roadmap
 
-1. App foundation (this)
-2. Write drafts and post them to Telegram
+1. App foundation
+2. Write drafts and post them to Telegram (this)
 3. Scheduling queue
 4. Analytics
 5. X/Twitter connector
