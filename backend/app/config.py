@@ -12,6 +12,12 @@ class Settings(BaseSettings):
     telegram_bot_token: str = ""
     telegram_channel_id: str = ""
 
+    # Password for the dashboard. Empty means no login (fine on your own
+    # computer); set it before the app is reachable from the internet.
+    dashboard_password: str = ""
+    # Set to true once the dashboard is served over HTTPS.
+    cookie_secure: bool = False
+
     database_url: str = "sqlite+aiosqlite:///./data/organizer.db"
     media_dir: Path = Path("./data/media")
     timezone: str = "Asia/Tashkent"
